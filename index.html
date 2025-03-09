@@ -10,15 +10,21 @@
     <script src="popup.js" defer></script>  <!-- 팝업 추가 -->
 </head>
 <body>
-    <!-- 헤더는 header.js에 의해 로드됩니다 -->
+    <!-- 헤더 로드 -->
+    <header id="header"></header>
 
     <main>
         <h1>주차장 무인세차 종합 솔루션</h1>
         <p>메인 페이지 콘텐츠</p>
     </main>
 
-    <footer>
-        <!-- footer.js가 footer.html을 동적으로 로드 -->
-    </footer>
+    <!-- 푸터 로드 -->
+    <footer id="footer"></footer>
+
+    <script>
+        // header.html과 footer.html을 동적으로 로드
+        document.getElementById("header").innerHTML = `<object type="text/html" data="header.html" ></object>`;
+        document.getElementById("footer").innerHTML = `<object type="text/html" data="footer.html" ></object>`;
+    </script>
 </body>
 </html>
