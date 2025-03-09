@@ -1,4 +1,4 @@
-/* 공통 스타일 */
+/* 📌 공통 스타일 */
 * {
     box-sizing: border-box;
     max-width: 100%;
@@ -20,7 +20,7 @@ body {
     min-height: 100vh;
 }
 
-/* 콘텐츠 영역 */
+/* 📌 콘텐츠 영역 */
 main {
     flex: 1;
     padding: 80px 20px;
@@ -31,7 +31,7 @@ main {
     text-align: center;
 }
 
-/* 상단 바 스타일 */
+/* 📌 헤더 스타일 */
 .top-bar {
     display: flex;
     justify-content: space-between;
@@ -52,7 +52,7 @@ main {
     width: auto;
 }
 
-/* 네비게이션 메뉴 스타일 */
+/* 📌 네비게이션 메뉴 스타일 */
 .nav-menu {
     display: flex;
     align-items: center;
@@ -69,6 +69,7 @@ main {
 .nav-menu ul li a {
     font-size: 1rem;
     color: #fff;
+    text-decoration: none;
     transition: color 0.3s;
 }
 
@@ -76,8 +77,19 @@ main {
     color: #d32f2f;
 }
 
-/* 모바일 네비게이션 */
+/* 📌 모바일 네비게이션 */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
 @media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
     .nav-menu {
         display: none;
         flex-direction: column;
@@ -100,7 +112,7 @@ main {
     }
 }
 
-/* 우측 버튼 스타일 */
+/* 📌 버튼 스타일 */
 .inquiry-button {
     background-color: #d32f2f;
     color: #fff;
@@ -116,7 +128,7 @@ main {
     background-color: #b71c1c;
 }
 
-/* 히어로 섹션 스타일 */
+/* 📌 히어로 섹션 */
 .hero-section {
     width: 100%;
     height: 100vh;
@@ -128,7 +140,7 @@ main {
     color: #fff;
 }
 
-/* 푸터 스타일 */
+/* 📌 푸터 스타일 */
 footer {
     background-color: rgba(32, 32, 32, 0.9);
     color: #fff;
@@ -148,6 +160,7 @@ footer {
     gap: 20px;
 }
 
+/* 푸터 로고 */
 .footer-logo-social {
     flex: 1 1 20%;
     text-align: left;
@@ -164,6 +177,7 @@ footer {
     vertical-align: middle;
 }
 
+/* 고객센터 */
 .footer-customer-center {
     flex: 1 1 25%;
     text-align: left;
@@ -173,10 +187,6 @@ footer {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
-}
-
-.footer-customer-center p {
-    margin: 5px 0;
 }
 
 .footer-company-info {
@@ -192,47 +202,34 @@ footer {
     color: #ffcccc;
 }
 
-/* 푸터 링크 */
-.footer-links {
-    flex: 1 1 100%;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.footer-links a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
-
-.footer-copyright {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-}
-
-/* 반응형 디자인 */
+/* 📌 푸터 반응형 스타일 */
 @media screen and (max-width: 768px) {
     .footer-container {
         flex-direction: column;
         text-align: center;
     }
 
-    .footer-company-info {
-        margin-top: 20px;
+    .footer-logo-social h1 {
+        font-size: 20px;
+    }
+
+    .footer-customer-center h2 {
+        font-size: 16px;
     }
 
     .footer-links {
-        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .footer-links a {
+        font-size: 12px;
     }
 }
 
-/* 팝업 오버레이 */
+/* 📌 팝업 스타일 */
 .popup-overlay {
     position: fixed;
     top: 0;
