@@ -29,26 +29,40 @@ img {
 
 /* 📌 로고 스타일 조정 */
 .logo {
-    width: auto; /* 기본 크기 */
-    height: auto;
+    display: flex;
+    align-items: center;
 }
 
 /* 📌 기본 로고 크기 (PC) */
 .logo img {
     width: auto;
-    max-width: 150px;
-    max-height: 60px;  /* 높이 제한 추가 */
+    max-width: 200px; /* 🔥 기존 150px → 200px로 확대 */
+    max-height: 80px; /* 🔥 기존 60px → 80px로 확대 */
     height: auto;
     display: block;
 }
 
-/* 📌 모바일에서 로고 크기 줄이기 (최초 제안 코드 유지) */
+/* 📌 태블릿에서 로고 크기 조정 */
+@media screen and (max-width: 1024px) {
+    .logo img {
+        max-width: 160px !important;
+        max-height: 70px !important;
+    }
+}
+
+/* 📌 모바일에서 로고 크기 줄이기 */
 @media screen and (max-width: 768px) {
     .logo img {
-        max-width: 80px !important; /* 모바일에서는 80px로 강제 적용 */
-        max-height: 40px !important; /* 높이도 줄이기 */
-        height: auto !important;
-        object-fit: contain !important; /* 비율 유지 */
+        max-width: 140px !important;
+        max-height: 60px !important;
+    }
+}
+
+/* 📌 작은 모바일 화면에서 로고 크기 조정 */
+@media screen and (max-width: 480px) {
+    .logo img {
+        max-width: 120px !important;
+        max-height: 50px !important;
     }
 }
 
@@ -65,13 +79,13 @@ img {
     top: 0;
     z-index: 1000;
     box-sizing: border-box;
-    height: 60px; /* 기본 헤더 높이 */
+    height: 70px; /* 🔥 기존 60px → 70px로 확대 */
 }
 
 /* 📌 모바일에서 헤더 높이 줄이기 */
 @media screen and (max-width: 768px) {
     .top-bar {
-        height: 50px;
+        height: 60px;
         padding: 5px 15px;
     }
 }
@@ -118,7 +132,7 @@ img {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 50px;
+        top: 60px;
         right: 0;
         background: rgba(0, 0, 0, 0.8);
         width: 100%;
