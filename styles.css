@@ -27,56 +27,19 @@ img {
     display: block;
 }
 
-/* 📌 로고 이미지 */
+/* 📌 로고 이미지 크기 조정 */
 .logo img {
     max-width: 150px; /* 기본 크기 */
     height: auto;
     display: block;
 }
 
-/* 모바일에서는 로고 크기를 더 줄임 */
-@media screen and (max-width: 1024px) {
+/* 📌 모바일에서 로고 크기 줄이기 */
+@media screen and (max-width: 768px) {
     .logo img {
-        max-width: 40px !important; /* 강제 적용 */
+        max-width: 80px !important; /* 모바일에서는 더 작은 크기 */
         height: auto !important;
     }
-}
-
-/* 📌 네비게이션 메뉴 안의 이미지 */
-.nav-menu img {
-    max-width: 40px;
-    height: auto;
-}
-
-/* 📌 모바일에서 네비게이션 이미지 크기 줄이기 */
-@media screen and (max-width: 768px) {
-    .nav-menu img {
-        max-width: 30px;
-    }
-}
-
-/* 📌 푸터 아이콘 */
-.social-icons img {
-    width: 30px;
-    height: auto;
-}
-
-/* 모바일에서 푸터 아이콘 크기 줄이기 */
-@media screen and (max-width: 768px) {
-    .social-icons img {
-        width: 20px;
-    }
-}
-
-/* 📌 콘텐츠 영역 */
-main {
-    flex: 1;
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
 /* 📌 헤더 스타일 */
@@ -92,16 +55,15 @@ main {
     top: 0;
     z-index: 1000;
     box-sizing: border-box;
+    height: 60px; /* 기본 헤더 높이 */
 }
 
-.top-bar .logo {
-    flex-shrink: 0;
-}
-
-.top-bar .nav-menu {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
+/* 📌 모바일에서 헤더 높이 줄이기 */
+@media screen and (max-width: 768px) {
+    .top-bar {
+        height: 50px;
+        padding: 5px 15px;
+    }
 }
 
 /* 📌 네비게이션 메뉴 스타일 */
@@ -129,7 +91,7 @@ main {
     color: #d32f2f;
 }
 
-/* 📌 모바일 네비게이션 */
+/* 📌 모바일 네비게이션 메뉴 */
 .menu-toggle {
     display: none;
     font-size: 24px;
@@ -294,7 +256,7 @@ footer {
     border-radius: 5px;
 }
 
-/* 모바일에서 팝업 이미지 크기 줄이기 */
+/* 📌 모바일에서 팝업 이미지 크기 줄이기 */
 @media screen and (max-width: 768px) {
     .popup-body img {
         width: 80%;
