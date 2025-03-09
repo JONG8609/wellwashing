@@ -20,6 +20,26 @@ body {
     min-height: 100vh;
 }
 
+/* 📌 반응형 이미지 (모든 이미지 기본 설정) */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 📌 로고 이미지 */
+.logo img {
+    max-width: 150px;
+    height: auto;
+}
+
+/* 모바일에서는 로고 크기 축소 */
+@media screen and (max-width: 768px) {
+    .logo img {
+        max-width: 100px;
+    }
+}
+
 /* 📌 콘텐츠 영역 */
 main {
     flex: 1;
@@ -44,12 +64,6 @@ main {
     top: 0;
     z-index: 1000;
     box-sizing: border-box;
-}
-
-/* 로고 스타일 */
-.logo img {
-    height: 25px;
-    width: auto;
 }
 
 /* 📌 네비게이션 메뉴 스타일 */
@@ -160,7 +174,7 @@ footer {
     gap: 20px;
 }
 
-/* 푸터 로고 */
+/* 📌 푸터 로고 */
 .footer-logo-social {
     flex: 1 1 20%;
     text-align: left;
@@ -172,12 +186,19 @@ footer {
 }
 
 .social-icons a img {
-    width: 25px;
+    width: 30px;
     margin-right: 10px;
     vertical-align: middle;
 }
 
-/* 고객센터 */
+/* 모바일에서 아이콘 크기 조정 */
+@media screen and (max-width: 768px) {
+    .social-icons a img {
+        width: 25px;
+    }
+}
+
+/* 📌 고객센터 */
 .footer-customer-center {
     flex: 1 1 25%;
     text-align: left;
@@ -280,12 +301,7 @@ footer {
     display: block;
 }
 
-/* 팝업 헤더 */
-.popup-header {
-    margin-bottom: 15px;
-}
-
-/* 팝업 바디 */
+/* 📌 팝업 내 요소 */
 .popup-body h2 {
     margin-top: 15px;
     font-size: 20px;
@@ -296,49 +312,11 @@ footer {
     border-radius: 5px;
 }
 
-.popup-body ul {
-    list-style: none;
-    padding: 0;
-    font-size: 18px;
-}
-
-.popup-body ul li {
-    margin: 5px 0;
-}
-
-/* 팝업 푸터 */
-.popup-footer {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #ff9900;
-}
-
 /* 슬라이드 버튼 */
-.popup-controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
 .popup-controls button {
     background: none;
     border: none;
     font-size: 20px;
     color: white;
     cursor: pointer;
-}
-
-/* 팝업 닫기 */
-.popup-hide {
-    position: absolute;
-    bottom: 10px;
-    right: 25px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #fff;
-}
-
-.popup-hide input {
-    margin-right: 15px;
 }
