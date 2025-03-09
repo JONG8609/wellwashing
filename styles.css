@@ -27,23 +27,30 @@ img {
     display: block;
 }
 
-/* 📌 로고 이미지 크기 조정 */
+/* 📌 로고 스타일 조정 */
+.logo {
+    width: auto; /* 기본 크기 */
+    height: auto;
+}
+
+/* 📌 로고 이미지 (PC) */
 .logo img {
-    max-width: 150px; /* 기본 크기 */
+    width: 150px; /* 기본 크기 */
     height: auto;
     display: block;
 }
 
-/* 📌 모바일에서 로고 크기 줄이기 (강제 적용) */
+/* 📌 모바일에서 강제 크기 조정 */
 @media screen and (max-width: 768px) {
     .logo {
-        width: 20px !important; /* 부모 요소도 줄이기 */
+        width: 20px !important; /* 부모 요소 크기 강제 */
     }
-    
+
     .logo img {
-        width: 20px !important; /* 강제 적용 */
+        width: 20px !important;  /* 강제 적용 */
         max-width: 20px !important;
         height: auto !important;
+        object-fit: contain !important;
     }
 }
 
