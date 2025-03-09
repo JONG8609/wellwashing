@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    console.log("현재 화면 너비:", window.innerWidth);
+
     fetch("header.html")
         .then(response => response.text())
         .then(data => {
