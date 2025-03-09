@@ -182,55 +182,43 @@ img {
 footer {
     background-color: rgba(32, 32, 32, 0.9);
     color: #fff;
-    padding: 20px 10px; /* 기존 40px → 20px으로 줄이기 */
+    padding: 15px 10px; /* 기존 40px → 15px으로 줄이기 */
     text-align: left;
     width: 100%;
     margin-top: auto;
-    font-size: 14px;
-    max-height: 180px; /* 📌 푸터 전체 높이 제한 */
-    overflow: hidden; /* 넘치는 내용 감추기 */
+    font-size: 13px;
+    max-height: 160px; /* 📌 푸터 전체 높이 제한 */
+    overflow: hidden;
 }
 
-/* 📌 푸터 컨테이너 */
+/* 📌 푸터 컨테이너 (한 줄 배치 유지) */
 .footer-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-/* 📌 푸터 로고 */
-.footer-logo-social {
-    flex: 1 1 15%;
-    text-align: left;
-    white-space: nowrap; /* 텍스트가 잘리지 않도록 설정 */
-}
-
-.footer-logo-social h1 {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-/* 📌 고객센터 */
+/* 📌 고객센터 & 창업문의 */
 .footer-customer-center {
-    flex: 1 1 30%;
+    flex: 1 1 28%; /* 동일한 너비 차지 */
     text-align: left;
-    font-size: 13px;
-    word-break: keep-all; /* 줄바꿈 허용 */
+    font-size: 12px;
+    word-break: keep-all;
 }
 
 .footer-customer-center h2 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
     margin-bottom: 3px;
 }
 
 /* 📌 회사 정보 */
 .footer-company-info {
-    flex: 1 1 45%;
+    flex: 1 1 40%;
     font-size: 12px;
     line-height: 1.4;
     text-align: left;
@@ -240,14 +228,14 @@ footer {
 /* 📌 저작권 경고 메시지 */
 .footer-warning {
     font-size: 11px;
-    margin-top: 5px;
+    margin-top: 3px;
     color: #ffcccc;
 }
 
 /* 📌 푸터 저작권 */
 .footer-copyright {
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
     margin-top: 5px;
     white-space: nowrap;
 }
@@ -255,18 +243,19 @@ footer {
 /* 📌 모바일 최적화 */
 @media screen and (max-width: 768px) {
     footer {
-        padding: 15px 8px; /* 📌 모바일 패딩 줄이기 */
-        max-height: 130px; /* 📌 모바일에서 푸터 높이 줄이기 */
+        padding: 12px 8px; /* 📌 모바일 패딩 줄이기 */
+        max-height: 110px; /* 📌 모바일에서 푸터 높이 줄이기 */
     }
 
     .footer-container {
-        flex-direction: column;
+        flex-direction: column; /* 모바일에서는 세로 정렬 */
         text-align: center;
         align-items: center;
     }
 
-    .footer-logo-social h1 {
-        font-size: 16px;
+    .footer-customer-center {
+        flex: none;
+        width: 100%; /* 모바일에서는 한 줄 차지 */
         margin-bottom: 3px;
     }
 
@@ -282,9 +271,11 @@ footer {
     }
 
     .footer-copyright {
-        font-size: 11px;
+        font-size: 10px;
+        margin-top: 5px;
     }
 }
+
 
 
 
