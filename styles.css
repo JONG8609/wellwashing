@@ -35,9 +35,10 @@ img {
 }
 
 /* 모바일에서는 로고 크기를 더 줄임 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .logo img {
-        max-width: 40px; /* 모바일에서는 더 작은 크기 */
+        max-width: 40px !important; /* 강제 적용 */
+        height: auto !important;
     }
 }
 
