@@ -1,25 +1,70 @@
+// 📌 쿠키 저장 함수
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
         let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + value + ";" + expires + "; path=/";
 }
 
+// 📌 쿠키 조회 함수
 function getCookie(name) {
     let nameEQ = name + "=";
-    let ca = document.cookie.split(';');
+    let ca = document.cookie.split(";");
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i].trim();
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
 }
 
-function createPopup() {
-    // if (getCookie("popup_shown")) return; // 쿠키가 있으면 팝업 표시 안 함1
+// 📌 팝업 데이터 (한 개씩 표시)
+const popupData = [
+    {
+        title: "대전 갑천 힐스테이트",
+        image: "src/images/background.jpg",
+        description: "도산대로점 오픈",
+    },
+    {
+        title: "강남점 오픈!",
+        image: "src/images/background.jpg",
+        description: "강남점 신규 오픈!",
+    },
+    {
+        title: "신촌점 오픈!",
+        image: "src/images/background.jpg",
+        description: "신촌점 신규 오픈!",
+    },
+    {
+        title: "서초점 오픈!",
+        image: "src/images/background.jpg",
+        description: "서초점 신규 오픈!",
+    },
+    {
+        title: "오픈 예정!",
+        image: "src/images/logo.png",
+        description: `
+            <ul>
+                <li>E1대구상동점</li>
+                <li>용산 이촌점</li>
+                <li>인천 서구 원당점</li>
+                <li>안산 서부점</li>
+                <li>광릉수목원점</li>
+            </ul>
+        `,
+    }
+];
+
+// 📌 현재 팝업 인덱스
+let currentPopupIndex = 0;
+
+// 📌 팝업 생성 함수 (하나씩 실행)
+function createPopup(index) {
+    if (index >= popupData.length) return; // 모든 팝업이 끝나면 종료
+
+    const data = popupData[index];
 
     const popupOverlay = document.createElement("div");
     popupOverlay.classList.add("popup-overlay");
@@ -27,113 +72,49 @@ function createPopup() {
     popupOverlay.innerHTML = `
     <div class="popup-box">
         <span class="popup-close">&times;</span>
-        <div class="popup-slider">
-            <!-- 첫 번째 슬라이드: 도산대로점 오픈 -->
-            <div class="popup-slide active">
-                <div class="popup-header">
-                    <img src="src/images/logo.png" alt="WELL WASHING Logo" class="popup-logo">
-                </div>
-                <div class="popup-body">
-                    <h2>대전 갑천 힐스테이트</h2>
-                    <img src="src/images/background.jpg" alt="도산대로점 오픈">
-                </div>
-                <div class="popup-footer">1 / 5</div>
-            </div>
-            <!-- 두 번째 슬라이드 -->
-            <div class="popup-slide">
-                <div class="popup-header">
-                    <img src="src/images/logo.png" alt="WELL WASHING Logo" class="popup-logo">
-                </div>
-                <div class="popup-body">
-                    <h2>강남점 오픈!</h2>
-                    <img src="src/images/src/images/open2.jpg" alt="강남점 오픈">
-                </div>
-                <div class="popup-footer">2 / 5</div>
-            </div>
-            <!-- 세 번째 슬라이드 -->
-            <div class="popup-slide">
-                <div class="popup-header">
-                    <img src="src/images/logo.png" alt="WELL WASHING Logo" class="popup-logo">
-                </div>
-                <div class="popup-body">
-                    <h2>신촌점 오픈!</h2>
-                    <img src="src/images/src/images/open3.jpg" alt="신촌점 오픈">
-                </div>
-                <div class="popup-footer">3 / 5</div>
-            </div>
-            <!-- 네 번째 슬라이드 -->
-            <div class="popup-slide">
-                <div class="popup-header">
-                    <img src="src/images/logo.png" alt="WELL WASHING Logo" class="popup-logo">
-                </div>
-                <div class="popup-body">
-                    <h2>서초점 오픈!</h2>
-                    <img src="src/images/src/images/open4.jpg" alt="서초점 오픈">
-                </div>
-                <div class="popup-footer">4 / 5</div>
-            </div>
-            <!-- 마지막 슬라이드: 오픈 예정 지점 -->
-            <div class="popup-slide">
-                <div class="popup-header">
-                    <img src="src/images/logo.png" alt="COME IN WASH Logo" class="popup-logo">
-                </div>
-                <div class="popup-body">
-                    <h2>오픈 예정!</h2>
-                    <ul>
-                        <li>E1대구상동점</li>
-                        <li>용산 이촌점</li>
-                        <li>인천 서구 원당점</li>
-                        <li>안산 서부점</li>
-                        <li>광릉수목원점</li>
-                    </ul>
-                </div>
-                <div class="popup-footer">5 / 5</div>
-            </div>
+        <div class="popup-header">
+            <img src="src/images/logo.png" alt="WELL WASHING Logo" class="popup-logo">
         </div>
-        <div class="popup-controls">
-            <button class="prev-btn">&lt;</button>
-            <button class="next-btn">&gt;</button>
+        <div class="popup-body">
+            <h2>${data.title}</h2>
+            <img src="${data.image}" alt="${data.description}">
+            <p>${data.description}</p>
         </div>
         <label class="popup-hide">
             <input type="checkbox" id="hidePopup"> 하루 동안 보지 않기
         </label>
     </div>
-`;
-
+    `;
 
     document.body.appendChild(popupOverlay);
 
-    const closeBtn = document.querySelector(".popup-close");
-    const hidePopupCheckbox = document.getElementById("hidePopup");
-    const prevBtn = document.querySelector(".prev-btn");
-    const nextBtn = document.querySelector(".next-btn");
-    const slides = document.querySelectorAll(".popup-slide");
-    let currentSlide = 0; // 처음에 첫 번째 슬라이드부터 시작
+    const closeBtn = popupOverlay.querySelector(".popup-close");
+    const hidePopupCheckbox = popupOverlay.querySelector("#hidePopup");
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle("active", i === index);
-        });
-    }
-
-    nextBtn.addEventListener("click", () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    });
-
-    prevBtn.addEventListener("click", () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-    });
-
+    // 팝업 닫기 이벤트
     closeBtn.addEventListener("click", function () {
         popupOverlay.style.display = "none";
+
         if (hidePopupCheckbox.checked) {
-            setCookie("popup_shown", "true", 1); // 1일 동안 유지
+            setCookie("popup_shown", "true", 1); // 🔥 모든 팝업 차단 (1일 동안)
+        } else {
+            // 🔥 다음 팝업 실행
+            currentPopupIndex++;
+            setTimeout(() => createPopup(currentPopupIndex), 500);
         }
     });
-
-    showSlide(currentSlide); // 팝업이 열릴 때 1번 슬라이드부터 시작
 }
 
-window.addEventListener("load", createPopup);
+// 📌 페이지 로드 후 실행 (헤더/푸터 로드 후!)
+function startPopup() {
+    if (!getCookie("popup_shown")) {
+        setTimeout(() => {
+            createPopup(currentPopupIndex);
+        }, 1000); // 1초 후 첫 팝업 실행
+    }
+}
+
+// 📌 실행 시점 조정: index.html의 헤더와 푸터가 로드된 후 실행
+window.addEventListener("load", () => {
+    setTimeout(() => startPopup(), 2000); // 2초 후 팝업 실행 (페이지가 완전히 뜬 후)
+});
