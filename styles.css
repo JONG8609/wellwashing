@@ -33,9 +33,11 @@ img {
     height: auto;
 }
 
-/* 📌 로고 이미지 (PC) */
+/* 📌 기본 로고 크기 (PC) */
 .logo img {
-    width: 150px; /* 기본 크기 */
+    width: auto;
+    max-width: 150px;
+    max-height: 60px;  /* 높이 제한 추가 */
     height: auto;
     display: block;
 }
