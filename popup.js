@@ -99,8 +99,8 @@ function createPopup(index) {
             setCookie("popup_shown", "true", 1); // 🔥 모든 팝업 차단 (1일 동안)
         } else {
             // 🔥 다음 팝업 실행
-            currentPopupIndex++;
-            setTimeout(() => createPopup(currentPopupIndex), 500);
+        //    currentPopupIndex++;
+        //    setTimeout(() => createPopup(currentPopupIndex), 500);
         }
     });
 }
