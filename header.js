@@ -11,3 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("헤더 로드 실패:", error));
 });
+window.addEventListener("load", function() {
+    if (window.innerWidth < 768) {
+        document.querySelector(".logo img").style.width = "20px";
+    }
+});

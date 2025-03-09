@@ -34,10 +34,15 @@ img {
     display: block;
 }
 
-/* 📌 모바일에서 로고 크기 줄이기 */
+/* 📌 모바일에서 로고 크기 줄이기 (강제 적용) */
 @media screen and (max-width: 768px) {
+    .logo {
+        width: 20px !important; /* 부모 요소도 줄이기 */
+    }
+    
     .logo img {
-        max-width: 20px !important; /* 모바일에서는 더 작은 크기 */
+        width: 20px !important; /* 강제 적용 */
+        max-width: 20px !important;
         height: auto !important;
     }
 }
