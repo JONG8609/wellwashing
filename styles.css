@@ -20,7 +20,7 @@ body {
     min-height: 100vh;
 }
 
-/* 📌 반응형 이미지 (모든 이미지 기본 설정) */
+/* 📌 모든 이미지 반응형 적용 */
 img {
     max-width: 100%;
     height: auto;
@@ -29,14 +29,40 @@ img {
 
 /* 📌 로고 이미지 */
 .logo img {
-    max-width: 150px;
+    max-width: 150px; /* 기본 크기 */
     height: auto;
 }
 
-/* 모바일에서는 로고 크기 축소 */
+/* 모바일에서는 로고 크기를 더 줄임 */
 @media screen and (max-width: 768px) {
     .logo img {
         max-width: 100px;
+    }
+}
+
+/* 📌 네비게이션 메뉴 안의 이미지 */
+.nav-menu img {
+    max-width: 40px;
+    height: auto;
+}
+
+/* 📌 모바일에서 네비게이션 이미지 크기 줄이기 */
+@media screen and (max-width: 768px) {
+    .nav-menu img {
+        max-width: 30px;
+    }
+}
+
+/* 📌 푸터 아이콘 */
+.social-icons img {
+    width: 30px;
+    height: auto;
+}
+
+/* 모바일에서 푸터 아이콘 크기 줄이기 */
+@media screen and (max-width: 768px) {
+    .social-icons img {
+        width: 20px;
     }
 }
 
@@ -185,19 +211,6 @@ footer {
     margin-bottom: 10px;
 }
 
-.social-icons a img {
-    width: 30px;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
-/* 모바일에서 아이콘 크기 조정 */
-@media screen and (max-width: 768px) {
-    .social-icons a img {
-        width: 25px;
-    }
-}
-
 /* 📌 고객센터 */
 .footer-customer-center {
     flex: 1 1 25%;
@@ -264,59 +277,15 @@ footer {
     z-index: 10000;
 }
 
-/* 팝업 박스 */
-.popup-box {
-    background: #111;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    text-align: center;
-}
-
-/* 닫기 버튼 */
-.popup-close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* 슬라이드 컨테이너 */
-.popup-slider {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.popup-slide {
-    display: none;
-    text-align: center;
-}
-
-.popup-slide.active {
-    display: block;
-}
-
-/* 📌 팝업 내 요소 */
-.popup-body h2 {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
+/* 📌 팝업 내 이미지 크기 */
 .popup-body img {
     width: 100%;
     border-radius: 5px;
 }
 
-/* 슬라이드 버튼 */
-.popup-controls button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
+/* 모바일에서 팝업 이미지 크기 줄이기 */
+@media screen and (max-width: 768px) {
+    .popup-body img {
+        width: 80%;
+    }
 }
