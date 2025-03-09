@@ -31,12 +31,13 @@ img {
 .logo img {
     max-width: 150px; /* 기본 크기 */
     height: auto;
+    display: block;
 }
 
 /* 모바일에서는 로고 크기를 더 줄임 */
 @media screen and (max-width: 768px) {
     .logo img {
-        max-width: 100px;
+        max-width: 40px; /* 모바일에서는 더 작은 크기 */
     }
 }
 
@@ -90,6 +91,16 @@ main {
     top: 0;
     z-index: 1000;
     box-sizing: border-box;
+}
+
+.top-bar .logo {
+    flex-shrink: 0;
+}
+
+.top-bar .nav-menu {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 /* 📌 네비게이션 메뉴 스타일 */
