@@ -24,26 +24,4 @@
     </div>
 </header>
 
-<script>
-    function toggleMenu() {
-        document.querySelector(".nav-menu").classList.toggle("active");
-    }
 
-    // 📌 모바일에서 로고 크기 강제 조정
-    window.addEventListener("load", function() {
-        let logo = document.querySelector(".logo img");
-
-        function resizeLogo() {
-            if (window.innerWidth <= 768) {
-                logo.style.width = "80px";
-                logo.style.height = "auto";
-            } else {
-                logo.style.width = "150px"; // PC에서는 원래 크기로 복원
-                logo.style.height = "auto";
-            }
-        }
-
-        resizeLogo(); // 처음 로딩 시 적용
-        window.addEventListener("resize", resizeLogo); // 화면 크기 변경 시 적용
-    });
-</script>

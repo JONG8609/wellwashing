@@ -45,8 +45,8 @@ img {
 /* 📌 모바일에서 로고 크기 줄이기 (높이 제한) */
 @media screen and (max-width: 1204px) {
     .logo img {
-        max-width: 20px !important; /* 모바일에서는 80px로 강제 적용 */
-        max-height: 20px !important; /* 높이도 줄이기 */
+        max-width: 80px !important; /* 모바일에서는 80px로 강제 적용 */
+        max-height: 40px !important; /* 높이도 줄이기 */
         height: auto !important;
         object-fit: contain !important; /* 비율 유지 */
     }
