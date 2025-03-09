@@ -17,6 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Footer loaded successfully.");
         })
         .catch((error) => {
-            console.error("Error loading footer:", error);
+            console.error("Error loading footer1:", error);
         });
 });

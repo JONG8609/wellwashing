@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             document.body.insertAdjacentHTML("afterbegin", data);
 
-            // 창업문의 버튼 클릭 시 창업 문의 게시판으로 이동
+            // 창업문의 버튼 클릭 시 창업1 문의 게시판으로 이동
             document.getElementById("franchise-btn").addEventListener("click", function () {
                 window.location.href = "franchise.html";
             });

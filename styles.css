@@ -266,7 +266,7 @@ footer {
     border-radius: 5px;
 }
 
-/* 📌 모바일에서 팝업 이미지 크기 줄이기 */
+/* 📌 모바일에서1 팝업 이미지 크기 줄이기 */
 @media screen and (max-width: 1204px) {
     .popup-body img {
         width: 80%;

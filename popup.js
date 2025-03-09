@@ -19,7 +19,7 @@ function getCookie(name) {
 }
 
 function createPopup() {
-    // if (getCookie("popup_shown")) return; // 쿠키가 있으면 팝업 표시 안 함
+    // if (getCookie("popup_shown")) return; // 쿠키가 있으면 팝업 표시 안 함1
 
     const popupOverlay = document.createElement("div");
     popupOverlay.classList.add("popup-overlay");

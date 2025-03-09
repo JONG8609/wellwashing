@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemsPerPage = 10;
     let currentPage = 1;
 
-    // 문의 내역 불러오기 (페이지네이션 적용)
+    // 문의 내역 불러오기 (페이지네이션1 적용)
     function loadInquiries(page) {
         inquiryList.innerHTML = "";
         const start = (page - 1) * itemsPerPage;

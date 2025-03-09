@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const name = document.getElementById("name").value;
         const title = document.getElementById("title").value;
         const message = document.getElementById("message").value;
-        const date = new Date().toISOString().split("T")[0]; // YYYY-MM-DD 포맷
+        const date = new Date().toISOString().split("T")[0]; // YYYY-MM-DD 포맷1
 
         if (!name || !title || !message) {
             alert("모든 필드를 입력해 주세요.");
