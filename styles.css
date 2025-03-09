@@ -40,17 +40,13 @@ img {
     display: block;
 }
 
-/* 📌 모바일에서 강제 크기 조정 */
+/* 📌 모바일에서 로고 크기 줄이기 (높이 제한) */
 @media screen and (max-width: 768px) {
-    .logo {
-        width: 20px !important; /* 부모 요소 크기 강제 */
-    }
-
     .logo img {
-        width: 20px !important;  /* 강제 적용 */
-        max-width: 20px !important;
+        max-width: 20px !important; /* 모바일에서는 80px로 강제 적용 */
+        max-height: 20px !important; /* 높이도 줄이기 */
         height: auto !important;
-        object-fit: contain !important;
+        object-fit: contain !important; /* 비율 유지 */
     }
 }
 
