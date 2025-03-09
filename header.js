@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("현재 화면 너비:", window.innerWidth);
 
     fetch("header.html")
         .then(response => response.text())
@@ -15,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("헤더 로드 실패:", error));
 });
 window.addEventListener("load", function() {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth <= 1204) {
         document.querySelector(".logo img").style.width = "20px";
     }
 });
