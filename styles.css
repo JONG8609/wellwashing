@@ -42,8 +42,8 @@ img {
     display: block;
 }
 
-/* 📌 모바일에서 로고 크기 줄이기 (높이 제한) */
-@media screen and (max-width: 768) {
+/* 📌 모바일에서 로고 크기 줄이기 (최초 제안 코드 유지) */
+@media screen and (max-width: 768px) {
     .logo img {
         max-width: 80px !important; /* 모바일에서는 80px로 강제 적용 */
         max-height: 40px !important; /* 높이도 줄이기 */
@@ -69,7 +69,7 @@ img {
 }
 
 /* 📌 모바일에서 헤더 높이 줄이기 */
-@media screen and (max-width: 768) {
+@media screen and (max-width: 768px) {
     .top-bar {
         height: 50px;
         padding: 5px 15px;
@@ -109,7 +109,7 @@ img {
     color: white;
 }
 
-@media screen and (max-width: 768) {
+@media screen and (max-width: 768px) {
     .menu-toggle {
         display: block;
     }
@@ -220,7 +220,7 @@ footer {
 }
 
 /* 📌 푸터 반응형 스타일 */
-@media screen and (max-width: 768) {
+@media screen and (max-width: 768px) {
     .footer-container {
         flex-direction: column;
         text-align: center;
@@ -266,8 +266,8 @@ footer {
     border-radius: 5px;
 }
 
-/* 📌 모바일에서1 팝업 이미지 크기 줄이기 */
-@media screen and (max-width: 768) {
+/* 📌 모바일에서 팝업 이미지 크기 줄이기 */
+@media screen and (max-width: 768px) {
     .popup-body img {
         width: 80%;
     }

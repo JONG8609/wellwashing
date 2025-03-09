@@ -46,7 +46,7 @@ function createPopup() {
                 </div>
                 <div class="popup-body">
                     <h2>강남점 오픈!</h2>
-                    <img src="src/images/src/images/background.jpg" alt="강남점 오픈">
+                    <img src="src/images/src/images/open2.jpg" alt="강남점 오픈">
                 </div>
                 <div class="popup-footer">2 / 5</div>
             </div>
@@ -57,7 +57,7 @@ function createPopup() {
                 </div>
                 <div class="popup-body">
                     <h2>신촌점 오픈!</h2>
-                    <img src="src/images/src/images/background.jpg" alt="신촌점 오픈">
+                    <img src="src/images/src/images/open3.jpg" alt="신촌점 오픈">
                 </div>
                 <div class="popup-footer">3 / 5</div>
             </div>
@@ -68,7 +68,7 @@ function createPopup() {
                 </div>
                 <div class="popup-body">
                     <h2>서초점 오픈!</h2>
-                    <img src="src/images/src/images/background.jpg" alt="서초점 오픈">
+                    <img src="src/images/src/images/open4.jpg" alt="서초점 오픈">
                 </div>
                 <div class="popup-footer">4 / 5</div>
             </div>
