@@ -20,7 +20,7 @@ function getCookie(name) {
     return null;
 }
 
-// 📌 팝업 데이터 (한 개씩 표시)
+// 📌 팝업 데이터 (각각 개별 팝업으로 순차적으로 표시)
 const popupData = [
     {
         title: "대전 갑천 힐스테이트",
@@ -57,12 +57,13 @@ const popupData = [
     }
 ];
 
-// 📌 현재 팝업 인덱스
+// 📌 현재 표시할 팝업 인덱스
 let currentPopupIndex = 0;
+let allPopupsClosed = false; // 🔥 X 버튼 클릭 시 모든 팝업이 닫힘
 
-// 📌 팝업 생성 함수 (하나씩 실행)
+// 📌 팝업 생성 함수
 function createPopup(index) {
-    if (index >= popupData.length) return; // 모든 팝업이 끝나면 종료
+    if (index >= popupData.length || allPopupsClosed) return; // 모든 팝업이 닫혔거나 끝나면 종료
 
     const data = popupData[index];
 
@@ -91,21 +92,30 @@ function createPopup(index) {
     const closeBtn = popupOverlay.querySelector(".popup-close");
     const hidePopupCheckbox = popupOverlay.querySelector("#hidePopup");
 
-    // 팝업 닫기 이벤트
+    // 📌 X 버튼을 누르면 현재 팝업 닫기 (하지만 다시 방문하면 뜸)
     closeBtn.addEventListener("click", function () {
-        popupOverlay.style.display = "none";
+        popupOverlay.remove();
 
         if (hidePopupCheckbox.checked) {
-            setCookie("popup_shown", "true", 1); // 🔥 모든 팝업 차단 (1일 동안)
+            setCookie("popup_shown", "true", 1); // 🔥 하루 동안 팝업 표시 안 함
         } else {
             // 🔥 다음 팝업 실행
-        //    currentPopupIndex++;
-        //    setTimeout(() => createPopup(currentPopupIndex), 500);
+            currentPopupIndex++;
+            setTimeout(() => createPopup(currentPopupIndex), 500);
+        }
+    });
+
+    // 📌 하루 동안 보지 않기 체크박스 클릭 시 모든 팝업 차단
+    hidePopupCheckbox.addEventListener("change", function () {
+        if (hidePopupCheckbox.checked) {
+            setCookie("popup_shown", "true", 1); // 🔥 모든 팝업 1일 차단
+            document.querySelectorAll(".popup-overlay").forEach(popup => popup.remove());
+            allPopupsClosed = true;
         }
     });
 }
 
-// 📌 페이지 로드 후 실행 (헤더/푸터 로드 후!)
+// 📌 페이지 로드 후 실행 (헤더/푸터 로드 후! 페이드인 효과 추가)
 function startPopup() {
     if (!getCookie("popup_shown")) {
         setTimeout(() => {
