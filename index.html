@@ -35,8 +35,8 @@
 
         // 🚀 헤더 & 푸터를 먼저 로드한 후 팝업 실행
         Promise.all([
-            loadComponent("header", "./header.html"),
-            loadComponent("footer", "./footer.html")
+            loadComponent("header", "header.html"),
+            loadComponent("footer", "footer.html")
         ]).then(() => {
             console.log("🚀 헤더 & 푸터 로딩 완료! 팝업 실행 시작");
             loadPopupScript(); // 🚀 헤더/푸터 로딩 후 팝업 실행
