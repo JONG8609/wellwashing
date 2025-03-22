@@ -20,33 +20,32 @@ function getCookie(name) {
     return null;
 }
 
-// 📌 팝업 데이터 (각각 개별 팝업으로 순차적으로 표시)
+// 📌 팝업 데이터
 const popupData = [
-    
     {
         title: "대전 갑천 트리플시티 힐스테이트",
         image: "src/images/open_pictures/daejeon_gabcjeon.png",
-        description: "도산대로점 오픈",
+        description: "대전 갑천 트리플시티 힐스테이트 오픈",
     },
     {
         title: "인천 송도 레이크시티 힐스테이트 3차",
         image: "src/images/open_pictures/songdo_lake_3.png",
-        description: "강남점 신규 오픈!",
+        description: "인천 송도 레이크시티 힐스테이트 3차 오픈!",
     },
     {
         title: "인천 학익동 시티오씨엘 1차",
         image: "src/images/open_pictures/hakik1.png",
-        description: "신촌점 신규 오픈!",
+        description: "인천 학익동 시티오씨엘 1차 오픈!",
     },
     {
         title: "인천 학익동 시티오씨엘 3차",
         image: "src/images/open_pictures/hakik3.png",
-        description: "서초점 신규 오픈!",
+        description: "인천 학익동 시티오씨엘 3차 오픈!",
     },
     {
         title: "서울 관악구 힐스테이트 관악 쎈트씨엘",
         image: "src/images/open_pictures/gwanak1.png",
-        description: "서초점 신규 오픈!",
+        description: "서울 관악구 힐스테이트 관악 쎈트씨엘 오픈!",
     },
     {
         title: "오픈 예정!",
@@ -59,13 +58,12 @@ const popupData = [
     }
 ];
 
-// 📌 현재 표시할 팝업 인덱스
 let currentPopupIndex = 0;
-let allPopupsClosed = false; // 🔥 X 버튼 클릭 시 모든 팝업이 닫힘
+let allPopupsClosed = false;
 
 // 📌 팝업 생성 함수
 function createPopup(index) {
-    if (index >= popupData.length || allPopupsClosed) return; // 모든 팝업이 닫혔거나 끝나면 종료
+    if (index >= popupData.length || index < 0 || allPopupsClosed) return;
 
     const data = popupData[index];
 
@@ -73,60 +71,82 @@ function createPopup(index) {
     popupOverlay.classList.add("popup-overlay");
 
     popupOverlay.innerHTML = `
-    <div class="popup-box">
+    <div class="popup-box popup-fixed">
         <span class="popup-close">&times;</span>
+
         <div class="popup-header">
             <img src="src/images/logo.png" alt="WELL WASHING Logo" class="popup-logo">
         </div>
+
         <div class="popup-body">
             <h2>${data.title}</h2>
-            <img src="${data.image}" alt="${data.description}">
-            <p>${data.description}</p>
+            <img src="${data.image}" alt="${data.title}">
+            <div class="popup-description">${data.description}</div>
+
+            <div class="popup-nav">
+                <div class="popup-nav-item">
+                    <button class="popup-prev" ${index === 0 ? 'disabled' : ''}>&lt;</button>
+                    <span class="popup-nav-label">이전으로 가기</span>
+                </div>
+                <div class="popup-nav-item">
+                    <button class="popup-next" ${index === popupData.length - 1 ? 'disabled' : ''}>&gt;</button>
+                    <span class="popup-nav-label">다음으로 가기</span>
+                </div>
+            </div>
         </div>
+
         <label class="popup-hide">
             <input type="checkbox" id="hidePopup"> 하루 동안 보지 않기
         </label>
     </div>
-    `;
+`;
+
 
     document.body.appendChild(popupOverlay);
 
     const closeBtn = popupOverlay.querySelector(".popup-close");
     const hidePopupCheckbox = popupOverlay.querySelector("#hidePopup");
+    const prevBtn = popupOverlay.querySelector(".popup-prev");
+    const nextBtn = popupOverlay.querySelector(".popup-next");
 
-    // 📌 X 버튼을 누르면 현재 팝업 닫기 (하지만 다시 방문하면 뜸)
     closeBtn.addEventListener("click", function () {
         popupOverlay.remove();
-
         if (hidePopupCheckbox.checked) {
-            setCookie("popup_shown", "true", 1); // 🔥 하루 동안 팝업 표시 안 함
-        } else {
-            // 🔥 다음 팝업 실행
-            currentPopupIndex++;
-            setTimeout(() => createPopup(currentPopupIndex), 500);
+            setCookie("popup_shown", true, 1);
         }
     });
 
-    // 📌 하루 동안 보지 않기 체크박스 클릭 시 모든 팝업 차단
     hidePopupCheckbox.addEventListener("change", function () {
         if (hidePopupCheckbox.checked) {
-            setCookie("popup_shown", "true", 1); // 🔥 모든 팝업 1일 차단
+            setCookie("popup_shown", true, 1);
             document.querySelectorAll(".popup-overlay").forEach(popup => popup.remove());
             allPopupsClosed = true;
         }
     });
+
+    // 📌 이전 팝업
+    prevBtn?.addEventListener("click", function () {
+        popupOverlay.remove();
+        createPopup(index - 1);
+    });
+
+    // 📌 다음 팝업
+    nextBtn?.addEventListener("click", function () {
+        popupOverlay.remove();
+        createPopup(index + 1);
+    });
 }
 
-// 📌 페이지 로드 후 실행 (헤더/푸터 로드 후! 페이드인 효과 추가)
+// 📌 팝업 시작 함수
 function startPopup() {
-    if (!getCookie("popup_shown")) {
+    if (getCookie("popup_shown") !== "true") {
         setTimeout(() => {
             createPopup(currentPopupIndex);
-        }, 1000); // 1초 후 첫 팝업 실행
+        }, 1000);
     }
 }
 
-// 📌 실행 시점 조정: index.html의 헤더와 푸터가 로드된 후 실행
+// 📌 실행 시점
 window.addEventListener("load", () => {
-    setTimeout(() => startPopup(), 2000); // 2초 후 팝업 실행 (페이지가 완전히 뜬 후)
+    setTimeout(() => startPopup(), startPopup);
 });

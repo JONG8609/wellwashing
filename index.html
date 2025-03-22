@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>메인 페이지 | WELL WASHING</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="popup.css">
 </head>
 <body>
     <!-- 🚀 헤더 로드 -->
@@ -17,6 +18,11 @@
 
     <!-- 🚀 푸터 로드 -->
     <footer id="footer"></footer>
+
+    <!-- ✅ 팝업 사용 여부 설정 -->
+    <script>
+        const USE_POPUP = true; // ← 팝업 사용 여부 제어: true 또는 false
+    </script>
 
     <script>
         // 🚀 fetch()를 사용하여 header.html과 footer.html을 동적으로 불러오기
@@ -33,13 +39,19 @@
             }
         }
 
-        // 🚀 헤더 & 푸터를 먼저 로드한 후 팝업 실행
+        // 🚀 헤더 & 푸터를 먼저 로드한 후 조건부로 팝업 실행
         Promise.all([
             loadComponent("header", "header.html"),
             loadComponent("footer", "footer.html")
         ]).then(() => {
-            console.log("🚀 헤더 & 푸터 로딩 완료! 팝업 실행 시작");
-            loadPopupScript(); // 🚀 헤더/푸터 로딩 후 팝업 실행
+            console.log("🚀 헤더 & 푸터 로딩 완료!");
+
+            if (typeof USE_POPUP !== "undefined" && USE_POPUP) {
+                console.log("✅ 팝업 실행 조건 충족 → popup.js 로드");
+                loadPopupScript(); // 🚀 팝업 스크립트 실행
+            } else {
+                console.log("❌ 팝업 실행 조건 미충족 → popup.js 미로드");
+            }
         }).catch(error => {
             console.error("🚨 헤더/푸터 로딩 중 오류 발생!", error);
         });
