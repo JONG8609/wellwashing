@@ -14,18 +14,71 @@
     z-index: 10000;
 }
 
-/* 📌 팝업 박스 (고정 크기) */
+/* 📌 팝업 박스 (고정 크기 + 드래그 가능 위치) */
 .popup-fixed {
     width: 500px;
-    height: 600px;
+    height: 650px;
     max-width: 500px;
-    max-height: 600px;
+    max-height: 650px;
     overflow: hidden;
     background-color: black;
     border-radius: 10px;
     padding: 20px;
-    position: relative;
+    position: absolute;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: move;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* ⭐ 밝은 회색 반투명 테두리 추천 */
+}
+
+/* 📌 팝업 본문 전체 구조 */
+.popup-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.popup-text-image {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.8;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center; /* ✅ 중앙 정렬 */
+}
+
+.popup-text-image ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.popup-text-image li {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.popup-text-image span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.popup-image-placeholder {
+    height: 200px;
+    width: 100%;
+    background-color: transparent;
 }
 
 /* 📌 팝업 닫기 버튼 */
@@ -54,6 +107,8 @@
 .popup-description {
     text-align: center;
     margin-top: 10px;
+    font-size: 14px;
+    color: white;
 }
 
 /* 🔄 좌우 버튼 그룹 정렬 */
@@ -63,7 +118,8 @@
     gap: 40px;
     margin-top: auto;
     min-height: 60px;
-    padding-top: 20px; /* ✅ 위쪽 패딩 추가 */
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .popup-nav button {
@@ -91,6 +147,7 @@
     text-align: center;
     font-size: 20px;
     margin: 15px 0;
+    color: white;
 }
 
 /* 🔧 하루 동안 보지 않기 - 오른쪽 정렬 및 체크박스 오른쪽 배치 */
@@ -99,12 +156,13 @@
     justify-content: flex-end;
     align-items: center;
     font-size: 14px;
-    margin-top: 10px;
     gap: 6px;
+    color: white;
+    padding-top: 10px;
 }
 
 .popup-hide input[type="checkbox"] {
-    order: 1; /* 🔄 체크박스를 오른쪽으로 */
+    order: 1;
     margin-left: 5px;
 }
 
@@ -114,9 +172,9 @@
 }
 
 .popup-logo {
-    display: block;        /* 🔥 inline → block 변경 */
+    display: block;
     height: 20px;
-    margin: 0 auto 10px;   /* 🔥 가운데 정렬 + 아래 여백 */
+    margin: 0 auto 10px;
 }
 
 /* 🔄 버튼과 텍스트 수직 정렬 */
