@@ -34,7 +34,7 @@ footer::-webkit-scrollbar {
 .footer-customer-center {
     flex: 1 1 25%;
     text-align: left;
-    font-size: 12px;
+    font-size: 15px;
     word-break: keep-all;
 }
 
